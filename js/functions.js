@@ -8,6 +8,7 @@ function clearMessages() {
 	document.getElementById('messages').innerHTML = '';
 }
 
+
 function getMoveName(argMoveId) {
 	if (argMoveId == '1') {
 		return 'kamień';
@@ -22,17 +23,31 @@ function getMoveName(argMoveId) {
 }
 
 function displayResult(pcMove, playerMove) {
-	printMessage('Zagrałem ' + pcMove + ', a Ty ' + playerMove);
+	printMessage('Komputer zagrał ' + pcMove + ', a Ty ' + playerMove);
 
 	if ((playerMove === 'papier' && pcMove === 'kamień') || (playerMove === 'kamień' && pcMove === 'nożyce') || (playerMove === 'nożyce' && pcMove === 'papier')) { // win
-		printMessage(`Wygrałeś! Twój ruch - ${playerMove}, ruch komputera - ${pcMove}`)
+		printMessage(`Wygrałeś!`)
 	} else if ((playerMove === 'kamień' && pcMove === 'papier') || (playerMove === 'nożyce' && pcMove === 'kamień') || (playerMove === 'papier' && pcMove === 'nożyce')) { // failure
-		printMessage(`Przegałeś! Twój ruch - ${playerMove}, ruch komputera - ${pcMove}`)
+		printMessage(`Przegałeś!`)
 	} else if((playerMove === 'kamień' && pcMove === 'kamień') || (playerMove === 'nożyce' && pcMove === 'nożyce') || (playerMove === 'papier' && pcMove === 'papier')){
-		printMessage(`Remis! twój ruch to - ${playerMove}, ruch komputera - ${pcMove}`)
+		printMessage(`Remis! `)
 	} else {
 		printMessage('Błedne dane, mecz nie rozegrany :(');
 	}
 
 
 }
+
+
+function playGame(playerInput) {
+    clearMessages();
+
+    let playerMove = getMoveName(playerInput);
+
+    const moves = ['papier', 'kamień', 'nożyce'];
+    const pcMoveIndex = Math.floor(Math.random() * 3)
+    const pcMove = moves[pcMoveIndex];
+
+    displayResult(pcMove, playerMove)
+}
+

@@ -1,15 +1,16 @@
-let playerInput = prompt('Wybierz swój ruch! 1: kamień, 2: papier, 3: nożyce.');
+const btnWithPaper = document.querySelector('#paper-btn')
+const btnWithStone = document.querySelector('#stone-btn')
+const btnWithScissors = document.querySelector('#scissors-btn')
 
 
-let playerMove = getMoveName(playerInput);
+btnWithPaper.addEventListener('click', () => {
+    playGame("2")
+})
+btnWithStone.addEventListener('click', () => {
+    playGame("1")
+})
+btnWithScissors.addEventListener('click', () =>{
+    playGame("3")
+})
 
-printMessage('Twój ruch to: ' + playerMove);
-
-const moves = ['papier', 'kamień', 'nożyce'];
-const pcMoveIndex = Math.floor(Math.random() * 3) 
-const pcMove = moves[pcMoveIndex];
-
-printMessage('Ruch komputera to: ' + pcMove);
-
-displayResult(pcMove, playerMove )
 
